@@ -16,8 +16,30 @@ body{
 }
 
 #bmi {
-    margin-right: 15px;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 17px 30px;
+    border: 0;
+    color: #fff;
+    font-size: 17.5px;
+    background-color: #FBDA61;
+    background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+    margin-right: 30px;
+    line-height: 30px;
+    font-weight: 800;
+    transition: background,color .1s ease-in-out;
+    
 }
+
+#bmiMessage{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: 'Noto Sans Display', sans-serif;
+}
+
 #logoInfo {
     width: 12%;
     height: 12%;
@@ -35,58 +57,157 @@ body{
 #divInfo :hover{
     transform: scale(1.03); /* Escala el div al 120% del tamaño original */
 }
+
+#userInfo{
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 17px 30px;
+    border: 0;
+    margin-left: 30px;
+    color: #fff;
+    font-size: 17.5px;
+    background: #00d301;
+    background: -webkit-linear-gradient(-196deg,#00d301,#36c275 50%,#00a562);
+    background: -webkit-linear-gradient(164deg,#00d301,#36c275 50%,#00a562);
+    background: linear-gradient(286deg,#00d301,#36c275 50%,#00a562);
+    line-height: 30px;
+    font-weight: 800;
+    transition: background,color .1s ease-in-out;
+}
+
 #userImage {
     background-color: grey;
     border-radius: circle;
 }
-h1{
+/* h1{
     text-align: right;
     width: fit-content;
     height: fit-content;
     margin-left: 170px;
     font-size: 30px;
-}
+} */
 p{
     text-align: center;
 }
-#routinesAmount {
+/* #routinesAmount {
     text-align: right;
     width: fit-content;
     height: fit-content;
     margin-left: 215px;
-}
+} */
 #exerciseInfo {
-    background-color: rgb(43, 43, 56);
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    padding: 17px 30px;
+    border: 0;
+    color: #fff;
+    font-size: 17.5px;
+    background-color: #08AEEA;
+    background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+    line-height: 30px;
+    font-weight: 800;
+    transition: background,color .1s ease-in-out;
     color: white;
-    width: 50%;
+    width: 45%;
     height: 490px;
     margin-left: 15px;
     margin-top: 20px;
     border-radius: 10px;
-    cursor: pointer;
     text-align: center;
 }
+
 #exInfo {
     text-align: center;
-    margin-left: 170px;
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: 'Noto Sans Display', sans-serif;
 }
+
 #linksInfo {
     background-color: rgb(21, 21, 28);
     transition: transform 0.5s ease; /* Agrega una transición suave para una animación más agradable */
     display: flex;
 }
+
 #linksInfo :hover {
     transform: scale(1.03); /* Escala el div al 120% del tamaño original */
 }
+
 #routinesInfo {
-    background-color: rgb(43, 43, 56);
+    display: inline-block;
+    outline: 0;
+    padding: 17px 30px;
+    border: 0;
+    background-color: #FFE53B;
+    background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+    line-height: 30px;
+    font-weight: 800;
+    transition: background,color .1s ease-in-out;
     color: white;
-    width: 50%;
+    width:45%;
     height: 490px;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 100px;
     margin-top: 20px;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
+    
+}
+
+#routineInfo{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-weight: 800;
+}
+
+#userName{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: 'Noto Sans Display', sans-serif;
+    font-weight: 800;
+}
+
+#routinesAmount{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.exercise-name{
+    text-align: center;
+    margin-top: 40px;
+    display: inline-block;
+    outline: 0;
+    border:0;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    color: #000;
+    background: #fff;
+    line-height: 30px;
+    border-radius: 40px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+    transition: all 0.2s;
+    :hover{
+        box-shadow: rgb(246, 84, 174) -2px -2px 0px 2px, rgb(255, 198, 0) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+        transform: scale(1.01);
+    }
+
+    
 }

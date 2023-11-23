@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>FitHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="notLogged">
@@ -21,7 +23,7 @@
       </div>
       <img src="../../assets/Logo transparente.png" id="logoInfo" alt="">
       <div id="bmi" class="miniBar">
-        <p id="bmiMessage">Calculate your BMI here!</p>
+        <p id="bmiMessage" (click)="changeWindow('BMI')">Calculate your BMI here!</p>
       </div>
 
     </div>
@@ -29,17 +31,21 @@
 
     <div id="linksInfo">
 
-      <div id="exerciseInfo" (click)="changeWindow('excercise')">
+      <div id="exerciseInfo" >
         <p id="exInfo">Watch the newest exercises on the site!</p>
-        <img src="..//..//assets/exercises.jpg" id="exImage" alt="">
+        <div *ngFor="let exercise of getRandomExercises(3); let i=index;" class="exercise-item" (click)="changeExerciseWindow(exercise)">
+          <h1 class="exercise-name"> {{exercise.getName()}}</h1>
+        </div>
+        
       </div>
 
       <div id="routinesInfo" (click)="changeWindow('routines')">
         <p id="routineInfo">Watch your routines to start work out!</p>
+        
       </div>
 
     </div>
-    <app-footer></app-footer>
+    <app-footer id="footer"></app-footer>
   </div>
 </body>
 </html>
