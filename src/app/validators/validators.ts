@@ -9,6 +9,18 @@ export class Validators {
         }
         return input.length > 0;
       }
+      static validarEntrada(entrada: string): boolean {
+        // Intenta convertir la entrada a un número
+        const numero = parseFloat(entrada);
+      
+        // Verifica si la conversión fue exitosa y si la entrada es un número
+        if (!isNaN(numero) && Number.isFinite(numero)) {
+          return true; // La entrada es un número
+        } else {
+          alert("No puedes agregar texto");
+          return false; // La entrada no es un número
+        }
+      }
       static validatePassword(password: string) {
         const regexMayuscula = /[A-Z]/;
       const regexNumero = /[0-9]/;
