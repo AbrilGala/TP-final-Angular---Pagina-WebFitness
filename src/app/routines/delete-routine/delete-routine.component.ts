@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Display } from 'src/app/display/display';
 import { routine } from 'src/app/models/routine';
 import { Usuario } from 'src/app/models/usuario';
 import { UserService } from 'src/app/user.service';
@@ -13,7 +14,7 @@ export class DeleteRoutineComponent implements OnInit {
   usersList: Usuario[] = [];
   position = -1;
   user: Usuario = new Usuario("","","");
-  constructor(userService: UserService){
+  constructor(private userService: UserService){
     this.usersList = userService.obtenerUsuarios();
   }
   async ngOnInit(): Promise<void> {
@@ -29,8 +30,52 @@ export class DeleteRoutineComponent implements OnInit {
       }
  }
  deleteRoutine(){
-
+  let miInput = document.getElementById("nameRoutineInp") as HTMLInputElement;
+  if(miInput){
+    let valor = miInput.value;
+    let position = this.verificarRutina(valor);
+    if(position>=0){
+      this.routinesList.splice(position, 1);
+      this.user.userRoutines = this.routinesList;
+      localStorage.setItem("oneUser", JSON.stringify(this.user));
+      if(this.user.id){
+        this.usersList[this.user.id] = this.user;
+        this.userService.users = this.usersList;
+        this.userService.persistirDatos();
+      }
+      this.displayMessage("green");
+      Display.displayBlock("deleted");
+      Display.displayNone("notFounded");
+    }else{
+      this.displayMessage("red");
+      Display.displayNone("deleted");
+      Display.displayBlock("notFounded");
+    }
+  }
  }
+ displayMessage(color: string){
+  let miDiv = document.getElementById("messages");
+  if(miDiv){
+    miDiv.style.display = 'block';
+    miDiv.style.backgroundColor = color;
+  }
+}
+ verificarRutina(nombre: string): number{
+  let i = 0;
+  let access = false;
+  while(i<this.routinesList.length && access == false){
+    if(this.routinesList[i].name != nombre){
+      i++;
+    }else{
+      access = true;
+    }
+  }
+  if(i>=this.routinesList.length){
+    return -1;
+  }else{
+    return i;
+  }
+}
  verificarUsuarioExistente(user: Usuario): number{
   let i=0;
   let position = -1;
