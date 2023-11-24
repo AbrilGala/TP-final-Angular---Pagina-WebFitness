@@ -4,6 +4,7 @@ import { Block } from '@angular/compiler';
 import { routine } from '../models/routine';
 import { UserService } from '../user.service';
 import { Usuario } from '../models/usuario';
+import { Display } from '../display/display';
 
 @Component({
   selector: 'app-routines',
@@ -24,7 +25,6 @@ export class RoutinesComponent {
   }
   async ngOnInit(): Promise<void> {
     const userSerializado = localStorage.getItem("oneUser");
-    this.user = new Usuario("","","");
     if(userSerializado){
       this.user = JSON.parse(userSerializado);
     } 
@@ -33,17 +33,17 @@ export class RoutinesComponent {
       
       if(this.position>=0){ ///ENCONTRO EL USUARIO 
         if(this.ejercicioSerializado){
-          this.displayBlock("selectRoutine");
+          Display.displayBlock("selectRoutine");
         }
         this.routinesList = this.user.userRoutines;
-        this.displayBlock("logged");
-        this.displayNone("notLogged");
-        this.displayNone("notLoggedMessage");
-        this.displayBlock('optionCreate');
-        this.displayBlock('optionLook');
-        this.displayBlock("optionDelete");
+        Display.displayBlock("logged");
+        Display.displayNone("notLogged");
+        Display.displayNone("notLoggedMessage");
+        Display.displayBlock('optionCreate');
+        Display.displayBlock('optionLook');
+        Display.displayBlock("optionDelete");
         if(this.routinesList.length>0){
-          this.displayBlock('routinesFounded');
+          Display.displayBlock('routinesFounded');
           let info = document.getElementById("routineName");
           for(let i=0; i<this.routinesList.length; i++) {
             if(info){
@@ -51,7 +51,7 @@ export class RoutinesComponent {
             }
           }
         }else {
-          this.displayBlock('noRoutines')
+          Display.displayBlock('noRoutines')
         }
       }else { ///NO HAY UN USUARIO LOGUEADO
         console.log("Para acceder a las rutinas debes estar logueado");
@@ -68,67 +68,10 @@ export class RoutinesComponent {
       }
       localStorage.setItem("publicRoutines", JSON.stringify(this.publicRoutinesList));
     }
-  displayBlock(name: string){
-    let miDiv = document.getElementById(name);
-        if(miDiv){
-        miDiv.style.display = 'block';
-        }
-  }
-  displayNone(name: string){
-    let miDiv = document.getElementById(name);
-        if(miDiv){
-        miDiv.style.display = 'none';
-        }
-  }
   displayCreate(){
-    this.displayNone("notLoggedMessage");
-    this.displayNone('routinesFounded');
-    this.displayNone('noRoutines');
-    this.displayBlock('create');
+    window.location.href = 'createRoutine';
   }
-  crearRutina(){
-    var inputValor = <HTMLInputElement>document.getElementById("nameRoutine");
-    let input = inputValor.value;
-    var privateOptionAccess = <HTMLInputElement>document.getElementById("privateAccessInp");
-    var publicOptionAccess = <HTMLInputElement>document.getElementById("publicAccessInp");
-    let optionAccessValue = false;
-    if(privateOptionAccess.checked){
-      console.log("PRIVADO");
-      
-      optionAccessValue = false;
-    }else {
-      if(publicOptionAccess.checked){
-        console.log("PUBLICO");
-        
-        optionAccessValue = true;
-      }
-    }
-    let rutina: routine = new routine(input, this.routinesList.length, optionAccessValue);
-    let access = this.verificarRutina(rutina);
-    if(access){
-      this.routinesList.push(rutina);
-    this.user.userRoutines = this.routinesList;
-    localStorage.setItem("oneUser", JSON.stringify(this.user));
-    this.usersList[this.position] = this.user;
-    localStorage.setItem("users", JSON.stringify(this.usersList));
-    this.displayNone("repeatedRoutine");
-    location.reload();
-    }else{
-      this.displayBlock("repeatedRoutine");
-    }
-  }
-  verificarRutina(rutina: routine): boolean{
-    let i = 0;
-    let access = true;
-    while(i<this.routinesList.length && access == true){
-      if(this.routinesList[i].name == rutina.name){
-        access = false;
-      }else{
-        i++;
-      }
-    }
-    return access;
-  }
+
   verificarUsuarioExistente(user: Usuario): number{
     let i=0;
     let position = -1;
@@ -145,6 +88,8 @@ export class RoutinesComponent {
     const nuevaURL = `specificRoutine?parametro=${encodeURIComponent(rutinaSerializada)}`;
     window.location.href = nuevaURL;
 }
+
+
 verificarEjercicioExistente(exercise: Excercise, rutina: routine): boolean{
   let access = true;
   if(rutina.excerciseList.length>0){
@@ -158,8 +103,10 @@ verificarEjercicioExistente(exercise: Excercise, rutina: routine): boolean{
   }
   return access;
 }
+
+
 addEx(rutina: routine){
-  this.displayNone("selectRoutine");
+  Display.displayNone("selectRoutine");
   if (this.ejercicioSerializado) { 
     const exercise: Excercise = JSON.parse(decodeURIComponent(this.ejercicioSerializado));
     let acceso = this.verificarEjercicioExistente(exercise, rutina);
@@ -172,20 +119,20 @@ addEx(rutina: routine){
     localStorage.setItem("users", JSON.stringify(this.usersList));
     this.changeWindow(rutina);
     }else{
-      this.displayNone("selected");
-      this.displayBlock("repeated");
+     Display.displayNone("selected");
+      Display.displayBlock("repeated");
     }
   }else{
     this.changeWindow(rutina);
   }
 }
- desmarcarOpcion(otraOpcion: any) {
-  let opcion = document.getElementById(otraOpcion) as HTMLInputElement;
-  if(opcion){
-    opcion.checked = false;
-  }
-}
+
+
 showRoutines(){
   window.location.href = 'publicRoutinesShow';
+}
+
+changeWindowLogin(name: string) {
+  window.location.href = `${name}`;
 }
 }

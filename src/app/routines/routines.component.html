@@ -7,17 +7,19 @@
 </head>
 <body>
     <div id="notLogged">
-        <app-nav-bar></app-nav-bar>
+        <app-nav-bar ></app-nav-bar>
         <br>
         <br>
         <br>
         <br>
-        <h1>TO WATCH, ADD OR EDIT ROUTINES YOU HAVE TO BE LOGGED FIRST</h1>
-        <button id="optionLogin">LOGIN HERE</button>
-      </div>
+        <div id="content" >
+            <h1 >TO WATCH, ADD OR EDIT ROUTINES YOU HAVE TO BE LOGGED FIRST</h1>
+            <button id="optionLogin" (click)="changeWindowLogin('login')">Login Here</button>
+        </div>
+    </div>
       <div id="logged" style="display: none;">
         <app-nav-bar-logged></app-nav-bar-logged>
-      </div>
+        </div>
     <br>
     <br>
     <br>
@@ -34,7 +36,6 @@
     <div id="selectRoutine" style="display: none;">
         <h1 id="selectH1">Select a routine to add your exercise</h1>
     </div>
-
     <div id="repeated" style="display: none;">
         <h1>The exercise you're trying to add is already added on your routine</h1>
     </div>
@@ -52,23 +53,11 @@
             </div>
         </div>
     </div>
-    <div id="create" style="display: none;">
-        <label for="nameRoutine">Name</label>
-        <input type="text" name="nameRoutine" id="nameRoutine" placeholder="Set a name for your routine">
-        <br>
-        <p>Select if you want your routine to be visible for everyone or private</p>
-        <input type="radio" name="publicAccess" id="publicAccessInp" (click)="desmarcarOpcion('privateAccess')">;
-        <label for="publicAccess">Public</label>
-        <br>
-        <input type="radio" name="privateAccess" id="privateAccessInp" (click)="desmarcarOpcion('publicAccess')">;
-        <label for="privateAccess">Private</label>
-        <button id="createRoutine" (click)="crearRutina()">Create</button>
-    </div>
     <div id="repsEx" style="display: none;">
         <label for="reps">Set how many reps you want to do</label>
         <input type="text" name="reps" id="reps">
         <button id="repsOn">Set</button>
     </div>
-    <app-footer></app-footer>
+    <app-footer id="footer"></app-footer>
 </body>
 </html>

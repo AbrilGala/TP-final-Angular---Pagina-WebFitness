@@ -6,12 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="container">
-        <div *ngFor="let routine of publicRoutinesList" class="routine-item" (click) = showRoutine(routine)>
-            <h1 class="routine-name"> {{routine.name}}</h1>
-            <p class="routine-amountEX"> {{routine.excerciseList.length}} excercises</p>
-            <p class="routine-access">From {{routine.userName}}</p>
+    <app-nav-bar-logged></app-nav-bar-logged>
+    <br><br><br><br>
+    <div id="routinesFounded">
+        <h1 id="messageFounded">PUBLIC ROUTINES</h1>
+        <div id="container">
+            <div *ngFor="let routine of publicRoutinesList" class="routine-item" (click) = showRoutine(routine)>
+                <h1 class="routine-name"> {{routine.name}}</h1>
+                <p class="routine-amountEX"> {{routine.excerciseList.length}} excercises</p>
+                <p class="routine-access">From {{routine.userName}}</p>
+            </div>
         </div>
     </div>
+    <app-footer></app-footer>
 </body>
 </html>

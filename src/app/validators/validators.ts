@@ -36,6 +36,9 @@ export class Validators {
 
       static validateEmail(email: string){
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        console.log(email);
+        console.log(regexEmail.test(email));
+        
         return regexEmail.test(email);
       }
 

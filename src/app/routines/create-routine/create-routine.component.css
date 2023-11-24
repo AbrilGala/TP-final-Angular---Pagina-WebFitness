@@ -1,0 +1,85 @@
+body {
+    background-color: rgb(21, 21, 28);
+    color: white;
+    height: 850px;
+    text-align: center;
+}
+#create {
+    text-align: left;
+    border-top: 1px solid grey;
+}
+#labelName{
+    margin-top: 15px;
+}
+#container {
+    background-color: rgb(43, 43, 56);
+    width: fit-content;
+    padding: 30px;
+    padding-top: 10px;
+    margin-left: 465px;
+    border-radius: 15px;
+    border: 1px solid grey;
+}
+#createMessage {
+    text-align: center;
+}
+p{
+    margin-top: 20px;
+}
+#nameRoutine{
+    border-radius: 5px;
+    border: 0px;
+    height: 40px;
+}
+button {
+    border: 0px;
+    border-radius: 30px;
+    background-color: greenyellow;
+    cursor: pointer;
+    transition: transform 0.5s ease; /* Agrega una transición suave para una animación más agradable */
+}
+button:hover{
+    background-color: white;
+    transform: scale(1.05); /* Escala el div al 120% del tamaño original */
+}
+#messages {
+    position: absolute;
+	margin-top: 0px;
+	margin-left: 528px;
+    background-color: red;
+	width: 400px;
+	height: 150px;
+	text-align: center;
+	border-radius: 15px;
+}
+.message{
+    font-size: 25px;
+    margin-top: 50px;
+}
+.back {
+    border-radius: 35px;
+    width: 150px;
+    height: 65px;
+    border: 0px;
+    font-size: 15px;
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+    line-height: 20px;
+    cursor: pointer;
+    background-color: rgb(147, 216, 0);
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 60px;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+}
+#backToListDiv {
+    display: flex;
+    justify-content: space-between;
+}
+.back:hover {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    transform: scale(1.05); /* Escala el div al 120% del tamaño original */
+}

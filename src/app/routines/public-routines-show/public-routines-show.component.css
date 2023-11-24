@@ -1,13 +1,16 @@
+body {
+    background-color: rgb(21, 21, 28);
+    height: 850px;
+}
 #container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-    justify-content: center;
     gap: 10px; /* Añadido espacio entre los elementos */
     margin-top: 20px; /* Añadido espacio entre #head y #container */
+    border-top: 2px solid rgb(118, 197, 0);
+    background-color: rgb(43, 43, 56);
+    height: 680px;
 }
-
-
 .routine-item {
     text-align: center;
     margin: 1em; /* Margen en unidades em */
@@ -21,12 +24,15 @@
     height: 230px; /* Altura fija en píxeles o cualquier unidad deseada */
     background: rgb(229,233,170);
     background: linear-gradient(0deg, rgba(229,233,170,1) 0%, rgba(229,237,34,1) 35%);
+    transition: transform 0.5s ease; /* Agrega una transición suave para una animación más agradable */
+    
 }
 
 .routine-item:hover{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
+    transform: scale(1.03); /* Escala el div al 120% del tamaño original */
 
+}
 
 /* Media query para ajustar el tamaño en pantallas más pequeñas */
 @media (max-width: 768px) {
@@ -41,4 +47,8 @@
     /* font-weight: 300; */
     font-family: 'Readex Pro', sans-serif;
     margin-bottom: 30px;
+}
+#messageFounded {
+    color: white;
+    text-align: center;
 }

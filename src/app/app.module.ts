@@ -29,6 +29,7 @@ import { SpecificInfoUserComponent } from './chineseff4/specific-info-user/speci
 import { SettingsComponent } from './chineseff4/specific-info-user/settings/settings.component';
 import { PrivacyComponent } from './chineseff4/specific-info-user/privacy/privacy.component';
 import { PublicRoutinesShowComponent } from './routines/public-routines-show/public-routines-show.component';
+import { CreateRoutineComponent } from './routines/create-routine/create-routine.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PublicRoutinesShowComponent } from './routines/public-routines-show/pub
     SettingsComponent,
     PrivacyComponent,
     PublicRoutinesShowComponent,
+    CreateRoutineComponent
   ],
   imports: [
     BrowserModule,

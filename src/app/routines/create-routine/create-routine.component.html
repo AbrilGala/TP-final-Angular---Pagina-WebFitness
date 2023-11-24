@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-nav-bar-logged></app-nav-bar-logged>
+    <br><br><br><br>
+    <div id="container">
+        <h1 id="messageCreate">CREATE A NEW ROUTINE</h1>
+    <div id="create" style="display: none;">
+        <label for="nameRoutine" id="labelName">Name</label>
+        <br>
+        <input type="text" name="nameRoutine" id="nameRoutine" placeholder="Set a name for your routine">
+        <br>
+        <p>Select if you want your routine to be visible for everyone or private</p>
+        <input type="radio" name="publicAccess" id="publicAccessInp" (click)="desmarcarOpcion('privateAccessInp')">;
+        <label for="publicAccess">Public</label>
+        <br>
+        <input type="radio" name="privateAccess" id="privateAccessInp" (click)="desmarcarOpcion('publicAccessInp')">;
+        <label for="privateAccess">Private</label>
+        <br>
+        <button id="createRoutine" (click)="crearRutina()">Create</button>
+    </div>
+    </div>
+    <br>
+    <div id="messages" style="display: none;">
+        <p id="created" class="message" style="display: none;">Routine successfully created</p>
+        <p id="repeated" class="message" style="display: none;">The routine is already defined</p>
+    </div>
+    <div id="backToListDiv">
+        <button id="backToList" class="back" (click)="backToList('routines')">BACK TO PREVIOUS PAGE</button>
+        <button id="backToMenu" class="back" (click)="backToList('')">BACK TO THE PRINCIPAL MENU</button>
+    </div>
+    <app-footer></app-footer>
+</body>
+</html>
