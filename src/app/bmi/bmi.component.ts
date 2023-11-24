@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../models/usuario';
 import { UserService } from '../user.service';
+import { Validators } from '../validators/validators';
 
 @Component({
   selector: 'app-bmi',
@@ -73,53 +74,62 @@ export class BmiComponent {
     }
    
     Calculate(): void {
-      const heightInput: HTMLInputElement | null = document.getElementById("h-input") as HTMLInputElement;
-      const weightInput: HTMLInputElement | null = document.getElementById("w-input") as HTMLInputElement;
+      const heightInput: HTMLInputElement = document.getElementById("h-input") as HTMLInputElement;
+      const weightInput: HTMLInputElement = document.getElementById("w-input") as HTMLInputElement;
       const bmiOutput: HTMLElement | null = document.getElementById("bmi-output");
       const bmiStatus: HTMLElement | null = document.getElementById("bmi-status");
-      
 
-      if (!heightInput || !weightInput || !bmiOutput || !bmiStatus) {
-          console.error("One or more elements not found.");
-          return;
-      }
-
-      console.log(this.user);
-      const height: number = parseFloat(heightInput.value);
-      const weight: number = parseFloat(weightInput.value);
-      
-      const userKey = `user_${this.user.email}`;
-
-      localStorage.setItem(`${userKey}_userHeight`, String(height));
-      localStorage.setItem(`${userKey}_userWeight`, String(weight));
-
-      this.user.height = height;
-      this.user.weight = weight;
-      
-      // localStorage.setItem("oneUser", JSON.stringify(this.usersList[this.position]));
-      let number  = weight / ((height / 100) ** 2);
-      this.result = number.toFixed(2);
-      console.log('Result: '+this.result);
-      if (!isNaN(number)) {
-          bmiOutput.innerHTML = this.result.toString();
-          if (number < 18.5) {
-            this.bmiStatus ="Underweight";
-              bmiStatus.innerHTML = "Underweight";
-          } else if (number< 25) {
-            this.bmiStatus ="Healthy";
-            bmiStatus.innerHTML = "Healthy";
-          } else if (number < 30) {
-            this.bmiStatus ="Overweight";
-              bmiStatus.innerHTML = "Overweight";
-          } else {
-            this.bmiStatus ="Obesity";
-              bmiStatus.innerHTML = "Obesity" ;
+      let heightValue = heightInput.value;
+      let weightValue = weightInput.value;
+      if((!Validators.validateInput(heightValue)) && !(Validators.validateInput(weightValue))){
+      }else{
+        console.log(this.user);
+        const height: number = parseFloat(heightInput.value);
+        const weight: number = parseFloat(weightInput.value);
+        
+        const userKey = `user_${this.user.email}`;
+  
+        localStorage.setItem(`${userKey}_userHeight`, String(height));
+        localStorage.setItem(`${userKey}_userWeight`, String(weight));
+  
+        this.user.height = height;
+        this.user.weight = weight;
+        
+        // localStorage.setItem("oneUser", JSON.stringify(this.usersList[this.position]));
+        let number  = weight / ((height / 100) ** 2);
+        this.result = number.toFixed(2);
+        console.log('Result: '+this.result);
+        if (!isNaN(number)) {
+          if(bmiOutput){
+            bmiOutput.innerHTML = this.result.toString();
           }
+            if (number < 18.5) {
+              if(bmiStatus){
+                this.bmiStatus ="Underweight";
+                bmiStatus.innerHTML = "Underweight";
+              }
+            } else if (number< 25) {
+              if(bmiStatus){
+              this.bmiStatus ="Healthy";
+              bmiStatus.innerHTML = "Healthy";
+              }
+            } else if (number < 30) {
+              if(bmiStatus){
+              this.bmiStatus ="Overweight";
+                bmiStatus.innerHTML = "Overweight";
+              }
+            } else {
+              if(bmiStatus){
+              this.bmiStatus ="Obesity";
+                bmiStatus.innerHTML = "Obesity" ;
+              }
+            }
+        }
+        
+        localStorage.setItem(`${userKey}_userBmi`, String(this.result));
+        localStorage.setItem(`${userKey}_userBmiStatus`, String(this.bmiStatus));
       }
-      
-      localStorage.setItem(`${userKey}_userBmi`, String(this.result));
-      localStorage.setItem(`${userKey}_userBmiStatus`, String(this.bmiStatus));
-    }
-
+  
+      } 
 
 }

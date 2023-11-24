@@ -3,11 +3,16 @@ import { UserService } from "../user.service";
 import { Usuario } from "../models/usuario";
 
 export class Validators {
-      static validateInput(input: string): boolean {
+      static validateInput(input: string): any {
         if(input.length == 0){
             alert("El campo no puede estar vacio");
+            console.log("TRUE 0");
+            return false;
+        }else{
+          console.log(input.length);
+          
+          return input.length > 0;
         }
-        return input.length > 0;
       }
       static validarEntrada(entrada: string): boolean {
         // Intenta convertir la entrada a un número

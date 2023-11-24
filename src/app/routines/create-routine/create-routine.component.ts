@@ -3,6 +3,7 @@ import { Display } from 'src/app/display/display';
 import { routine } from 'src/app/models/routine';
 import { Usuario } from 'src/app/models/usuario';
 import { UserService } from 'src/app/user.service';
+import { Validators } from 'src/app/validators/validators';
 
 @Component({
   selector: 'app-create-routine',
@@ -69,16 +70,13 @@ export class CreateRoutineComponent {
       var publicOptionAccess = <HTMLInputElement>document.getElementById("publicAccessInp");
       let optionAccessValue = false;
       if(privateOptionAccess.checked){
-        console.log("PRIVADO");
-        
         optionAccessValue = false;
       }else {
-        if(publicOptionAccess.checked){
-          console.log("PUBLICO");
-          
+        if(publicOptionAccess.checked){          
           optionAccessValue = true;
         }
       }
+      if(Validators.validateInput(input)){
       let rutina: routine = new routine(input, this.routinesList.length, optionAccessValue);
       let access = this.verificarRutina(rutina);
       if(access){
@@ -94,6 +92,7 @@ export class CreateRoutineComponent {
         localStorage.removeItem("created");
       }
       location.reload();
+    }
 
     }
     verificarRutina(rutina: routine): boolean{
