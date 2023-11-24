@@ -13,9 +13,8 @@ export class Validators {
           return input.length > 0;
         }
       }
-      static validarEntrada(entrada: string): boolean {
+      static validarEntrada(numero: number): boolean {
         // Intenta convertir la entrada a un número
-        const numero = parseFloat(entrada);
       
         // Verifica si la conversión fue exitosa y si la entrada es un número
         if (!isNaN(numero) && Number.isFinite(numero)) {

@@ -27,8 +27,13 @@ export class DeleteRoutineComponent implements OnInit {
       
       if(this.position>=0){ ///ENCONTRO EL USUARIO 
         this.routinesList = this.user.userRoutines;
-      }
- }
+        let rutinaAux = localStorage.getItem("toDelete");
+        if(rutinaAux){
+          this.deleteFromRoutine();
+        }
+      }
+
+ }
  deleteRoutine(){
   let miInput = document.getElementById("nameRoutineInp") as HTMLInputElement;
   if(miInput){
@@ -53,6 +58,31 @@ export class DeleteRoutineComponent implements OnInit {
     }
   }
  }
+ deleteFromRoutine(){
+  let rutinaAux = localStorage.getItem("toDelete");
+  if(rutinaAux){
+    Display.displayNone("delete");
+    let valorRutina = JSON.parse(rutinaAux);
+    let position = this.verificarRutina(valorRutina.name);
+      if(position>=0){
+        this.routinesList.splice(position, 1);
+        this.user.userRoutines = this.routinesList;
+        localStorage.setItem("oneUser", JSON.stringify(this.user));
+        if(this.user.id){
+          this.usersList[this.user.id] = this.user;
+          this.userService.users = this.usersList;
+          this.userService.persistirDatos();
+        }
+        this.displayMessage("green");
+        Display.displayBlock("deleted");
+        Display.displayNone("notFounded");
+      }else{
+        this.displayMessage("red");
+        Display.displayNone("deleted");
+        Display.displayBlock("notFounded");
+      }
+  }
+ }
  displayMessage(color: string){
   let miDiv = document.getElementById("messages");
   if(miDiv){

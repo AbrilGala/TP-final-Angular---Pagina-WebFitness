@@ -56,7 +56,9 @@ export class SpecificInfoComponent implements OnInit {
       const exercise: Excercise = JSON.parse(decodeURIComponent(this.ejercicioSerializado)); 
       let miInput = document.getElementById("repsInp") as HTMLInputElement;
       if(miInput){
-        if(Validators.validarEntrada(JSON.stringify(miInput))){
+        let valor = miInput.value;
+        let numero = parseInt(valor);
+        if(Validators.validarEntrada(numero)){
           let inputValue = miInput.value;
           let reps = parseInt(inputValue);
           exercise.reps = reps;
