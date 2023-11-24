@@ -5,7 +5,6 @@ import { Usuario } from "../models/usuario";
 export class Validators {
       static validateInput(input: string): any {
         if(input.length == 0){
-            alert("El campo no puede estar vacio");
             console.log("TRUE 0");
             return false;
         }else{

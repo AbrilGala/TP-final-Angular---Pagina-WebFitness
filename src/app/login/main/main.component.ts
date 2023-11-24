@@ -93,7 +93,7 @@ export class MainComponent implements OnInit{
       window.location.href = '';
     }else {
       localStorage.setItem('wrongAccess', 'The email or password is incorrect');
-      location.reload();
+      // location.reload();
     }
   }
   verifyUserLogin(emailAux1: string, passAux1: string): number {

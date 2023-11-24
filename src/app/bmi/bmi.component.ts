@@ -82,6 +82,8 @@ export class BmiComponent {
       let heightValue = heightInput.value;
       let weightValue = weightInput.value;
       if((!Validators.validateInput(heightValue)) && !(Validators.validateInput(weightValue))){
+        alert("El campo no puede estar vacio");
+
       }else{
         console.log(this.user);
         const height: number = parseFloat(heightInput.value);

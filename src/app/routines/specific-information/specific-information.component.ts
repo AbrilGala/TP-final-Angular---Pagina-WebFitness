@@ -27,7 +27,10 @@ export class SpecificInformationComponent implements OnInit{
     }
     }
   }
+  
   backToList(name: string){
     window.location.href = name;
   }
+
+
 }
