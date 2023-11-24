@@ -42,13 +42,13 @@ export class MainComponent implements OnInit{
   //Cuando se sube el formulario, se crea el nuevo Usuario y lo agrega a la lista de usuarios:
   onSubmit(event: Event){
     event.preventDefault();
-    if(Validators.validateEmail(this.email)){
+    if(!Validators.validateEmail(this.email)){
       alert('Please enter a valid email');
     }else{
-      if(Validators.validateInput(this.userName)){
+      if(!Validators.validateInput(this.userName)){
         alert('Please enter a userName');
       }else{
-        if(Validators.validatePassword(this.password)){
+        if(!Validators.validatePassword(this.password)){
         }else {
           this.verifyUserRegistration();
           if(this.register == true) {
