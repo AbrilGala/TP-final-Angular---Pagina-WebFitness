@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-nav-bar-logged></app-nav-bar-logged>
+    <br><br><br><br>
+    <div id="container">
+        <h1 id="messageCreate">DELETE A ROUTINE</h1>
+    <div id="create">
+        <label for="nameRoutine" id="labelName">Name of the routine</label>
+        <br>
+        <input type="text" name="nameRoutine" id="nameRoutineInp" placeholder="Set the name of the routine">
+        <br>
+        <button id="createRoutine" (click)="deleteRoutine()">Delete</button>
+    </div>
+    </div>
+    <br>
+    <div id="messages" style="display: none;">
+        <p id="deleted" class="message" style="display: none;">Routine successfully deleted</p>
+        <p id="notFounded" class="message" style="display: none;">The routine is not defined</p>
+    </div>
+    <div id="backToListDiv">
+        <button id="backToList" class="back" (click)="backToList('routines')">BACK TO PREVIOUS PAGE</button>
+        <button id="backToMenu" class="back" (click)="backToList('')">BACK TO THE PRINCIPAL MENU</button>
+    </div>
+    <app-footer></app-footer>
+</body>
+</html>

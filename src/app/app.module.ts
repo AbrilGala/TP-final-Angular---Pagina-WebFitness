@@ -30,6 +30,7 @@ import { SettingsComponent } from './chineseff4/specific-info-user/settings/sett
 import { PrivacyComponent } from './chineseff4/specific-info-user/privacy/privacy.component';
 import { PublicRoutinesShowComponent } from './routines/public-routines-show/public-routines-show.component';
 import { CreateRoutineComponent } from './routines/create-routine/create-routine.component';
+import { DeleteRoutineComponent } from './routines/delete-routine/delete-routine.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { CreateRoutineComponent } from './routines/create-routine/create-routine
     SettingsComponent,
     PrivacyComponent,
     PublicRoutinesShowComponent,
-    CreateRoutineComponent
+    CreateRoutineComponent,
+    DeleteRoutineComponent
   ],
   imports: [
     BrowserModule,
