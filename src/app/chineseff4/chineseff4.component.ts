@@ -7,6 +7,7 @@ import { Usuario } from '../models/usuario';
 import { ExerciseDataService } from '../exercise-data-service.service';
 import { UserService } from '../user.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { routine } from '../models/routine';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export class Chineseff4Component implements OnInit {
   excerciseList: Array<Excercise> = [];
   usersList: Usuario[] = [];
+  routinesList: routine[] = [];
+  user: Usuario = new Usuario("","","");
   private exerciseSubscription: Subscription = new Subscription;
 
   constructor(private excerciseService: ExcerciseService,private exerciseDataService: ExerciseDataService, private userService: UserService) {
@@ -24,21 +27,24 @@ export class Chineseff4Component implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const userSerializado = localStorage.getItem("oneUser");
-    let user: Usuario = new Usuario("","","");
+    this.user= new Usuario("","","");
     if(userSerializado){
-      user = JSON.parse(userSerializado);
+      this.user = JSON.parse(userSerializado);
       this.displayNone("notLogged");
       this.displayBlock("logged");
-      this.showUserData(user);
+      this.showUserData(this.user);
+      
+      await this.excerciseService.loadExercises();
+      this.excerciseList = this.excerciseService.getExcercises();  
+      this.excerciseList.splice(0,3);
 
-    await this.excerciseService.loadExercises();
-    this.excerciseList = this.excerciseService.getExcercises();  
-    this.excerciseList.splice(0,3);
-    
+      this.routinesList = this.user.userRoutines;
   
     }else {
     }
   }
+
+  
   displayBlock(name: string){
     let miDiv = document.getElementById(name);
     if(miDiv){
@@ -83,6 +89,10 @@ export class Chineseff4Component implements OnInit {
   
     // Devuelve los primeros numExercises elementos de la lista mezclada
     return shuffledList.slice(0, numExercises);
+  }
+  
+  showRoutines(){
+    window.location.href = 'publicRoutinesShow';
   }
   
 }

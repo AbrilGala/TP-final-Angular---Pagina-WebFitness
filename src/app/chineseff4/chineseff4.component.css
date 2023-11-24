@@ -144,17 +144,14 @@ p{
     background-color: #FFE53B;
     background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
     line-height: 30px;
-    font-weight: 800;
     transition: background,color .1s ease-in-out;
     color: white;
-    width:45%;
+    width:47%;
     height: 490px;
-    margin-left: 100px;
+    margin-left: 80px;
     margin-top: 20px;
     border-radius: 10px;
-    cursor: pointer;
     text-align: center;
-    
 }
 
 #routineInfo{
@@ -165,6 +162,47 @@ p{
     font-weight: 800;
 }
 
+.each-Routine {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    color: #000;
+    width: 400px;
+    background: #fff;
+    line-height: 30px;
+    border-radius: 40px;
+    padding: 5px; /* Reducir el padding */
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+    box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+    transition: all 0.2s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box; /* Incluir padding y border en el tamaño total del div */
+      /* text-align: center;
+    margin-top: 40px;
+    display: inline-block;
+    outline: 0;
+    border:0;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    color: #000;
+    background: #fff;
+    line-height: 30px;
+    border-radius: 40px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+    transition: all 0.2s; */
+}
+
 #userName{
     text-align: center;
     margin-top: 10px;
@@ -173,12 +211,17 @@ p{
     font-weight: 800;
 }
 
-#routinesAmount{
+.routine-name{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* #routinesAmount{
     text-align: center;
     margin-top: 20px;
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
-}
+} */
 
 #footer{
     position: fixed;

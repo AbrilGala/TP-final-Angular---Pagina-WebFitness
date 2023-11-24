@@ -41,7 +41,14 @@
 
       <div id="routinesInfo" (click)="changeWindow('routines')">
         <p id="routineInfo">Watch your routines to start work out!</p>
-        
+        <div *ngFor="let routine of routinesList; let i=index" class="routine-item" (click) = showRoutines()>
+          <ng-container *ngIf="i < 3">
+            <div class="each-Routine">
+              <h1 class="routine-name"> {{routine.name}}</h1>
+              <p class="routine-amountEX"> {{routine.excerciseList.length}} excercises!</p>
+            </div>
+        </ng-container>
+        </div>
       </div>
 
     </div>
