@@ -24,18 +24,27 @@
     margin-right: 10px;
 }
 .optionButton {
-    background-color: rgb(43, 84, 146);
-    color: white;
-    border-radius: 10px;
-    width: 180px;
-    height: 80px;
-    border: 0px;
-    font-size: 20px;
-    font-weight: 100;
-    font-family: 'Lato', sans-serif;
-    line-height: 58px;
+    display: inline-block;
+    outline: 0;
+    border: none;
+    box-shadow: none;
     cursor: pointer;
-    transition: transform 0.5s ease; /* Agrega una transición suave para una animación más agradable */
+    padding: 9px 22px;
+    font-size: 22px;
+    height: 50px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    line-height: normal;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+    border-radius: 50px;
+    transition: color .2s ease,background-color .2s ease,box-shadow .2s ease;
+    :hover{
+        box-shadow: 0 0 0 0.15rem #5ceace;
+    }
+    
 }
 #myRoutines {
     color: white;
@@ -61,7 +70,7 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 10px; /* Añadido espacio entre los elementos */
     margin-top: 20px; /* Añadido espacio entre #head y #container */
-    border-top: 2px solid rgb(118, 197, 0);
+    border-top: 2px solid rgb(197, 0, 99);
     background-color: rgb(43, 43, 56);
     height: 550px;
 }
@@ -76,8 +85,9 @@
     width: 100%; /* Ancho del 100% para ser responsive */
     max-width: 200px; /* Ancho máximo en píxeles o cualquier unidad deseada */
     height: 230px; /* Altura fija en píxeles o cualquier unidad deseada */
-    background: rgb(229,233,170);
-    background: linear-gradient(0deg, rgba(229,233,170,1) 0%, rgba(229,237,34,1) 35%);
+    background-color: #D9AFD9;
+background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
     transition: transform 0.5s ease; /* Agrega una transición suave para una animación más agradable */
     
 }
@@ -124,8 +134,9 @@
 body{
     /* background-color: rgb(21, 21, 28);
     height: 810px; */
-    background-color: #85FFBD;
-    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    
 }
 
 #content {

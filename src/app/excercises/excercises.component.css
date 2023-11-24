@@ -4,3 +4,9 @@
     width: 100%;
     /* Otros estilos del footer */
 }
+
+body{
+    background-color: #ecff60;
+background-image: linear-gradient(0deg, #ecff60 0%, #B5FFFC 100%);
+
+}
