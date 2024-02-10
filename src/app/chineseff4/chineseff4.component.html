@@ -8,9 +8,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <div id="notLogged">
-    <app-nav-bar></app-nav-bar>
+    <app-nav-bar id="navBar"></app-nav-bar>
+    <h1 id="welcome-message">Welcome to FitHub</h1>
+    <div id="video-presentation">
+      <video controls autoplay muted src="../../assets/workout video.mp4" type="video/mp4"></video>
+    </div>
+    <div id="presentation">
+      <div id="first-presentation">
+        <h2>Welcome to FitHub  Your Ultimate Fitness Hub!</h2>
+        <p>Embark on a transformative fitness journey with FitHub, the premier online destination for all your training needs. At FitHub, we empower you to take control of your fitness routine by providing a comprehensive platform to create personalized workout routines, visualize exercises, and seamlessly integrate them into your daily regimen.</p>
+      </div>
+      <div id="Feature">
+        <h3>Key Features:</h3>
+        <div id="List">
+          <ol>
+            <li class="Feature-name">Customized Workouts:</li>
+            <p class="Features-description">Tailor your fitness experience by crafting personalized workout routines that cater to your unique goals and preferences. Our intuitive interface makes it easy to create, edit, and track your progress.</p>
+            <li class="Feature-name">Exercise Visualization:</li>
+            <p class="Features-description">Dive into a vast library of exercises with step-by-step visualizations. Whether you're a seasoned pro or a beginner, our detailed guides ensure you perform each exercise with precision and confidence.</p>
+            <li class="Feature-name" >BMI Calculator:</li>
+            <p class="Features-description" >Monitor your fitness journey with our Body Mass Index (BMI) calculator. Understand your body composition and track changes over time to stay motivated and informed about your progress.</p>
+            <li class="Feature-name">Trending Exercises:</li>
+            <p class="Features-description">Stay ahead of the fitness curve by exploring our curated list of trending exercises. Discover the latest workout trends, incorporate them into your routine, and keep your workouts fresh and exciting.</p>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <app-footer id="footerNotLogged"></app-footer>
   </div>
+
+
+  
   <div id="logged" style="display: none;">
     <app-nav-bar-logged></app-nav-bar-logged>
     <br><br><br>

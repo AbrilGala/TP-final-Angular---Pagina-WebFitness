@@ -5,15 +5,15 @@ body {
     justify-content: center;
     justify-items: center;
 	min-height: 100vh;
-	font-family: 'Jost', sans-serif;
+	/* font-family: 'Jost', sans-serif; */
     background-color: rgb(21, 21, 28);
 
 }
 .routine-name {
     font-size: 3rem;
     font-weight: 100;
-    font-family: 'Lato', sans-serif;
     line-height: 58px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
     text-align: center;
     color: white;
     padding-top: 90px;
@@ -22,7 +22,7 @@ body {
 .exercise-name {
     font-size: 3rem;
     font-weight: 100;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Kdam Thmor Pro', sans-serif;
     line-height: 58px;
 
 }
@@ -37,20 +37,34 @@ body {
     box-shadow: rgba(22, 20, 20, 0.5) 12px 12px 12px 12px; 
 }
 .exercise-item {
-    background-color: rgb(43, 43, 56);
+    /* background-color: rgb(43, 43, 56);
     background-color: none;
     border: 1px solid rgb(130, 130, 130);
+    border-radius: 8px; */ 
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
     border-radius: 8px;
+    padding: 14px 24px;
+    border: none;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+    color: #fff;
     text-align: center;
     margin: 5px;
     width: 470px;
     box-shadow: rgba(22, 20, 20, 0.5) 12px 12px 12px 12px; 
     transition: transform 0.5s ease; /* Agrega una transición suave para una animación más agradable */
 }
+
 .exercise-item:hover{
-    border: 2px solid rgb(130, 130, 130);
+    /* border: 2px solid rgb(130, 130, 130); */
     transform: scale(1.03); /* Escala el div al 120% del tamaño original */
 }
+
 .exercise-type {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -58,7 +72,7 @@ body {
 .exercise-difficulty {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.back {
+/* .back {
     border-radius: 35px;
     width: 150px;
     height: 65px;
@@ -74,17 +88,45 @@ body {
     margin-top: 60px;
     margin-bottom: 15px;
     transition: transform 0.5s ease;
-}
+} */
 #backToListDiv {
     display: flex;
     justify-content: space-between;
 }
-.back:hover {
+
+button.btn { 
+    margin-top: 30px;
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    border-radius: 50px;
+    min-width: 200px;
+    height: 50px;
+    font-size: 18px;
+    background-color: #fd0;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #e0473c;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+}
+
+/* .back:hover {
     background-color: black;
     border: 1px solid white;
     color: white;
-    transform: scale(1.05); /* Escala el div al 120% del tamaño original */
-}
+    transform: scale(1.05); 
+} */
 #noExercises {
     color: white;
     background-color: rgb(43, 43, 56);
@@ -102,4 +144,32 @@ body {
 #noExercisesH1 {
     margin-top: 20px;
     font-size: 30px;
+}
+
+.exercise-item p{
+    font-family: 'Poppins', sans-serif;
+}
+
+#deleteButton{  
+    display: inline-block;
+    outline: 0;
+    border:0;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    color: #000;
+    background: #fff;
+    line-height: 30px;
+    border-radius: 40px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+    transition: all 0.2s;
+    :hover{
+        box-shadow: rgb(246, 84, 174) -2px -2px 0px 2px, rgb(255, 198, 0) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+        transform: scale(1.01);
+    }
+
+    
 }

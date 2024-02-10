@@ -9,6 +9,7 @@
     color: #bbb7b7; /* Color de los enlaces cuando no se les pasa el mouse por encima */
     transition: color 0.3s; /* Agrega una transición suave de color */
     cursor: pointer;
+    margin-right: 7%;
     
 }
 

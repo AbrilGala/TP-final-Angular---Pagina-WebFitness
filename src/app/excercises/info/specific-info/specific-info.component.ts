@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Display } from 'src/app/display/display';
 import { Excercise } from 'src/app/models/excercise';
 import { Usuario } from 'src/app/models/usuario';
+import { Validators } from 'src/app/validators/validators';
 
 @Component({
   selector: 'app-specific-info',
