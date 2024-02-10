@@ -10,6 +10,7 @@ button{
     border-left: 0;
     border-top: 0;
     margin-left: 5px;
+    background: none;
     transform: rotate(315deg);
 }
 
@@ -20,6 +21,6 @@ button{
     border-left: 0;
     border-top: 0;
     margin-right: 5px;
-
+    background: none;
     transform: rotate(135deg);
   }

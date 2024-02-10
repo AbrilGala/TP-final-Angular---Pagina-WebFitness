@@ -49,7 +49,12 @@ export class MainComponent implements OnInit{
       if(!Validators.validateInput(this.userName)){
         alert('Please enter a userName');
       }else{
+<<<<<<< HEAD
         if(Validators.validatePassword(this.password)){
+=======
+        if(!Validators.validatePassword(this.password)){
+        }else {
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
           this.verifyUserRegistration();
           if(this.register == true) {
           let nuevoUsuario: Usuario = new Usuario (this.email, this.userName, this.password, this.userList.length);
@@ -93,7 +98,7 @@ export class MainComponent implements OnInit{
       window.location.href = '';
     }else {
       localStorage.setItem('wrongAccess', 'The email or password is incorrect');
-      location.reload();
+      // location.reload();
     }
   }
   verifyUserLogin(emailAux1: string, passAux1: string): number {

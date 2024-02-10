@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <app-nav-bar-logged></app-nav-bar-logged>
@@ -16,14 +18,16 @@
             <p class="exercise-muscle">Muscle: {{exercise.muscle}}</p>
             <p class="exercise-reps">Repetitions: {{exercise.reps}}</p>
             <p class="exercise-instructions">{{exercise.instructions}}</p>
+            <button id="deleteButton " (click)="changeWindow()">Delete</button>
         </div>
     </div>
     <div id="noExercises" style="display: none;">
         <h1 id="noExercisesH1">YOU HAVE NO EXERCISES UPLOADED ON THIS ROUTINE YET</h1>
     </div>
     <div id="backToListDiv">
-        <button id="backToList" class="back" (click)="backToList('routines')">BACK TO PREVIOUS PAGE</button>
-        <button id="backToMenu" class="back" (click)="backToList('')">BACK TO THE PRINCIPAL MENU</button>
+        <button  class="btn" (click)="backToList('routines')">BACK TO PREVIOUS PAGE</button>
+        <button class="btn" >ADD EXERCISE</button>
+        <button  class="btn" (click)="backToList('')">BACK TO THE PRINCIPAL MENU</button>
     </div>
 </body>
 </html>

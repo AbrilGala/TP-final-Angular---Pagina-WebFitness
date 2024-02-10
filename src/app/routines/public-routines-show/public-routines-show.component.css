@@ -1,5 +1,9 @@
 body {
+<<<<<<< HEAD
     background-color: rgb(21, 21, 28);
+=======
+    background-color: rgb(21, 21, 44);
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     height: 850px;
 }
 #container {
@@ -7,8 +11,15 @@ body {
     grid-template-columns: repeat(5, 1fr);
     gap: 10px; /* Añadido espacio entre los elementos */
     margin-top: 20px; /* Añadido espacio entre #head y #container */
+<<<<<<< HEAD
     border-top: 2px solid rgb(118, 197, 0);
     background-color: rgb(43, 43, 56);
+=======
+    border-top: 2px solid rgb(0, 118, 197);
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     height: 680px;
 }
 .routine-item {
@@ -51,4 +62,14 @@ body {
 #messageFounded {
     color: white;
     text-align: center;
+<<<<<<< HEAD
+=======
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+#footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
 }

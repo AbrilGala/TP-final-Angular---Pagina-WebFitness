@@ -19,6 +19,7 @@
     /* Por ejemplo, el siguiente estilo agrega un borde sólido y esquinas redondeadas */
     border: 1px solid #111111;
     border-radius: 0.25rem;
+    background-color: rgb(215, 255, 248);
     /* Agrega cualquier otro estilo según tus preferencias */
     
   }

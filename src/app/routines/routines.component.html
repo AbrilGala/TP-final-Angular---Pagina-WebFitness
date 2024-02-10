@@ -7,24 +7,30 @@
 </head>
 <body>
     <div id="notLogged">
-        <app-nav-bar></app-nav-bar>
+        <app-nav-bar ></app-nav-bar>
         <br>
         <br>
         <br>
         <br>
-        <h1>TO WATCH, ADD OR EDIT ROUTINES YOU HAVE TO BE LOGGED FIRST</h1>
-        <button id="optionLogin">LOGIN HERE</button>
-      </div>
+        <div id="content" >
+            <h1 >TO WATCH, ADD OR EDIT ROUTINES YOU HAVE TO BE LOGGED FIRST</h1>
+            <button id="optionLogin" (click)="changeWindowLogin('login')">Login Here</button>
+        </div>
+    </div>
       <div id="logged" style="display: none;">
         <app-nav-bar-logged></app-nav-bar-logged>
-      </div>
+        </div>
     <br>
     <br>
     <br>
     <div id="options">
         <button (click)="displayCreate('createRoutine')" id="optionCreate" class="optionButton" style="display: none;">ADD ROUTINE</button>
         <button id="optionLook" class="optionButton" style="display: none;" (click)="showRoutines()">LOOK OTHERS ROUTINES</button>
+<<<<<<< HEAD
         <button (click)="displayCreate('deleteRoutine')" id="optionDelete" class="optionButton" style="display: none;">DELETE ROUTINE</button>
+=======
+        <button (click)="changeWindowLogin('deleteRoutine')" id="optionDelete" class="optionButton" style="display: none;">DELETE ROUTINE</button>
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     </div>
   
     <div id="noRoutines" style="display: none;">
@@ -57,6 +63,6 @@
         <input type="text" name="reps" id="reps">
         <button id="repsOn">Set</button>
     </div>
-    <app-footer></app-footer>
+    <app-footer id="footer"></app-footer>
 </body>
 </html>

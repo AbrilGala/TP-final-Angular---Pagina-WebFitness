@@ -3,11 +3,26 @@ import { UserService } from "../user.service";
 import { Usuario } from "../models/usuario";
 
 export class Validators {
-      static validateInput(input: string): boolean {
+      static validateInput(input: string): any {
         if(input.length == 0){
-            alert("El campo no puede estar vacio");
+            console.log("TRUE 0");
+            return false;
+        }else{
+          console.log(input.length);
+          
+          return input.length > 0;
         }
-        return input.length > 0;
+      }
+      static validarEntrada(numero: number): boolean {
+        // Intenta convertir la entrada a un número
+      
+        // Verifica si la conversión fue exitosa y si la entrada es un número
+        if (!isNaN(numero) && Number.isFinite(numero)) {
+          return true; // La entrada es un número
+        } else {
+          alert("No puedes agregar texto");
+          return false; // La entrada no es un número
+        }
       }
       static validatePassword(password: string) {
         const regexMayuscula = /[A-Z]/;

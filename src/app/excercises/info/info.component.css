@@ -4,6 +4,10 @@ body {
     flex-direction: column;
     /* min-height: 100vh; */
     margin-bottom: 10px; /* Ajusta según sea necesario */
+    background-color: #ecff60;
+background-image: linear-gradient(0deg, #ecff60 0%, #B5FFFC 100%);
+
+
 }
 
 #head {

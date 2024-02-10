@@ -3,25 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Delete</title>
+=======
+    <title>Document</title>
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
 </head>
 <body>
     <app-nav-bar-logged></app-nav-bar-logged>
     <br><br><br><br>
     <div id="container">
         <h1 id="messageCreate">DELETE A ROUTINE</h1>
+<<<<<<< HEAD
     <div id="delete" style="display: none;">
         <label for="nameRoutine" id="labelName">Name</label>
         <br>
         <input type="text" name="nameRoutine" id="nameRoutine" placeholder="Set the name of the routine to delete">
         <br>
         <button id="deleteRoutine" (click)="deleteRoutine()">Delete</button>
+=======
+    <div id="delete">
+        <label for="nameRoutine" id="labelName">Name of the routine</label>
+        <br>
+        <input type="text" name="nameRoutine" id="nameRoutineInp" placeholder="Set the name of the routine">
+        <br>
+        <button id="createRoutine" (click)="deleteRoutine()">Delete</button>
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     </div>
     </div>
     <br>
     <div id="messages" style="display: none;">
         <p id="deleted" class="message" style="display: none;">Routine successfully deleted</p>
+<<<<<<< HEAD
         <p id="notFounded" class="message" style="display: none;">Routine not founded</p>
+=======
+        <p id="notFounded" class="message" style="display: none;">The routine is not defined</p>
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     </div>
     <div id="backToListDiv">
         <button id="backToList" class="back" (click)="backToList('routines')">BACK TO PREVIOUS PAGE</button>

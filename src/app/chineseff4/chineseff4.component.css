@@ -1,5 +1,7 @@
 body{
-    background-color: rgb(21, 21, 28);
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+    min-height: 100vh;
+    
 }
 #logged {
     background-color: rgb(21, 21, 28);
@@ -253,4 +255,86 @@ p{
     }
 
     
+<<<<<<< HEAD
+=======
+}
+
+#video-presentation {
+    margin-top: 40px;
+    max-width: 50%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: -10px 8px 0px rgb(181, 253, 235);
+  }
+
+  #video-presentation video {
+    width: 100%;
+    height: auto;
+    display: block; /* Evita espacios adicionales debajo del video */
+    margin: 0 auto;  /* Centra el video horizontalmente dentro del contenedor */
+  }
+
+  #welcome-message{
+    color: #000;
+    font-family: 'Lobster', sans-serif;
+    margin-top: 75px;
+    text-align: center;
+  }
+
+  #navBar{
+    position: fixed;
+    top: 0;
+  }
+
+.Feature-name{
+    font-size: 30px;
+    font-family: 'Hanken Grotesk', sans-serif;
+}
+
+#first-presentation {
+    box-shadow: 15px 51px 45px -35px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+    background-color: #329eddb4;
+    background-image: linear-gradient(160deg, #4aa7dd4f 0%, #80D0C7 100%);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-weight: 800;
+}
+
+#Feature {
+    margin-left: 20px;
+    margin-right: 30px;
+    margin-bottom: 35px;
+}
+
+#Feature h3 {
+    margin-top: 20px;
+    font-family: 'Bree Serif', serif;
+    font-weight: 500;
+    font-size: 40px;
+
+}
+
+#List{
+    margin-top: 20px;
+}
+
+#List p{
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+#footerNotLogged{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
 }

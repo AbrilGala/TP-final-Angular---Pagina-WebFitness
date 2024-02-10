@@ -15,7 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
-   <app-chineseff4  *ngIf="element == true"></app-chineseff4>
+    <app-nav-bar *ngIf="element == true" ></app-nav-bar>
+   <!-- <app-chineseff4  ></app-chineseff4> -->
    <app-nav-bar-logged  *ngIf="logged == true"></app-nav-bar-logged>
 
    <div id="last-update"  *ngIf="storedHeight">

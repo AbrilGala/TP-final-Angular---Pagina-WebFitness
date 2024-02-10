@@ -5,11 +5,14 @@ import { routine } from '../models/routine';
 import { UserService } from '../user.service';
 import { Usuario } from '../models/usuario';
 import { Display } from '../display/display';
+<<<<<<< HEAD
 import { first, last } from 'rxjs';
 import { routineScheduled } from '../models/routineScheduled';
 import { day } from '../models/day';
 import { month } from '../models/month';
 import { season } from '../models/season';
+=======
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
 
 @Component({
   selector: 'app-routines',
@@ -55,9 +58,12 @@ export class RoutinesComponent {
         Display.displayBlock('optionLook');
         Display.displayBlock("optionDelete");
         if(this.routinesList.length>0){
+<<<<<<< HEAD
           if(this.verificarCalendario() == true){
             this.addToCalendar = true;
           }
+=======
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
           Display.displayBlock('routinesFounded');
           let info = document.getElementById("routineName");
           for(let i=0; i<this.routinesList.length; i++) {
@@ -83,6 +89,7 @@ export class RoutinesComponent {
       }
       localStorage.setItem("publicRoutines", JSON.stringify(this.publicRoutinesList));
     }
+<<<<<<< HEAD
   displayCreate(name: string){
     window.location.href = name;
   }
@@ -144,7 +151,12 @@ export class RoutinesComponent {
       localStorage.removeItem("calendarDate");
     }
     return exists;
+=======
+  displayCreate(){
+    window.location.href = 'createRoutine';
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
   }
+
   verificarUsuarioExistente(user: Usuario): number{
     let i=0;
     let position = -1;
@@ -161,6 +173,8 @@ export class RoutinesComponent {
     const nuevaURL = `specificRoutine?parametro=${encodeURIComponent(rutinaSerializada)}`;
     window.location.href = nuevaURL;
 }
+
+
 verificarEjercicioExistente(exercise: Excercise, rutina: routine): boolean{
   let access = true;
   if(rutina.excerciseList.length>0){
@@ -174,6 +188,8 @@ verificarEjercicioExistente(exercise: Excercise, rutina: routine): boolean{
   }
   return access;
 }
+
+
 addEx(rutina: routine){
   Display.displayNone("selectRoutine");
   if (this.ejercicioSerializado) { 
@@ -195,7 +211,16 @@ addEx(rutina: routine){
     this.changeWindow(rutina);
   }
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
 showRoutines(){
   window.location.href = 'publicRoutinesShow';
+}
+
+changeWindowLogin(name: string) {
+  window.location.href = `${name}`;
 }
 }

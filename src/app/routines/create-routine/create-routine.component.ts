@@ -3,6 +3,10 @@ import { Display } from 'src/app/display/display';
 import { routine } from 'src/app/models/routine';
 import { Usuario } from 'src/app/models/usuario';
 import { UserService } from 'src/app/user.service';
+<<<<<<< HEAD
+=======
+import { Validators } from 'src/app/validators/validators';
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
 
 @Component({
   selector: 'app-create-routine',
@@ -69,6 +73,7 @@ export class CreateRoutineComponent {
       var publicOptionAccess = <HTMLInputElement>document.getElementById("publicAccessInp");
       let optionAccessValue = false;
       if(privateOptionAccess.checked){
+<<<<<<< HEAD
         console.log("PRIVADO");
         
         optionAccessValue = false;
@@ -79,6 +84,15 @@ export class CreateRoutineComponent {
           optionAccessValue = true;
         }
       }
+=======
+        optionAccessValue = false;
+      }else {
+        if(publicOptionAccess.checked){          
+          optionAccessValue = true;
+        }
+      }
+      if(Validators.validateInput(input)){
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
       let rutina: routine = new routine(input, this.routinesList.length, optionAccessValue);
       let access = this.verificarRutina(rutina);
       if(access){
@@ -94,6 +108,10 @@ export class CreateRoutineComponent {
         localStorage.removeItem("created");
       }
       location.reload();
+<<<<<<< HEAD
+=======
+    }
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
 
     }
     verificarRutina(rutina: routine): boolean{

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Display } from 'src/app/display/display';
 import { Excercise } from 'src/app/models/excercise';
 import { Usuario } from 'src/app/models/usuario';
+import { Validators } from 'src/app/validators/validators';
 
 @Component({
   selector: 'app-specific-info',
@@ -51,6 +52,7 @@ export class SpecificInfoComponent implements OnInit {
     Display.displayBlock("repsDiv");
   }
   agregarArutina(){
+<<<<<<< HEAD
     let input = document.getElementById("repsInp") as HTMLInputElement;
     if(input){
       let inputValue = input.value;
@@ -61,6 +63,22 @@ export class SpecificInfoComponent implements OnInit {
         const nuevoEJ = JSON.stringify(exercise);
         const nuevaURL = `routines?parametro=${encodeURIComponent(nuevoEJ)}`;
         window.location.href = nuevaURL;
+=======
+    if (this.ejercicioSerializado) { 
+      const exercise: Excercise = JSON.parse(decodeURIComponent(this.ejercicioSerializado)); 
+      let miInput = document.getElementById("repsInp") as HTMLInputElement;
+      if(miInput){
+        let valor = miInput.value;
+        let numero = parseInt(valor);
+        if(Validators.validarEntrada(numero)){
+          let inputValue = miInput.value;
+          let reps = parseInt(inputValue);
+          exercise.reps = reps;
+          const nuevoEJ = JSON.stringify(exercise);
+          const nuevaURL = `routines?parametro=${encodeURIComponent(nuevoEJ)}`;
+          window.location.href = nuevaURL; 
+        }
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
       }
     }
   }

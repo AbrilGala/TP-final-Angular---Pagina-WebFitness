@@ -4,7 +4,11 @@ body {
     height: 850px;
     text-align: center;
 }
+<<<<<<< HEAD
 #delete {
+=======
+#create {
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     text-align: left;
     border-top: 1px solid grey;
 }
@@ -36,6 +40,10 @@ button {
     border-radius: 30px;
     background-color: greenyellow;
     cursor: pointer;
+<<<<<<< HEAD
+=======
+    margin-top: 20px;
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     transition: transform 0.5s ease; /* Agrega una transición suave para una animación más agradable */
 }
 button:hover{
@@ -45,7 +53,11 @@ button:hover{
 #messages {
     position: absolute;
 	margin-top: 0px;
+<<<<<<< HEAD
 	margin-left: 528px;
+=======
+	margin-left: 474px;
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     background-color: red;
 	width: 400px;
 	height: 150px;
@@ -69,7 +81,11 @@ button:hover{
     background-color: rgb(147, 216, 0);
     margin-left: 15px;
     margin-right: 15px;
+<<<<<<< HEAD
     margin-top: 60px;
+=======
+    margin-top: 350px;
+>>>>>>> e4b411f21c8f424754869f7b7d8787765b20acfe
     margin-bottom: 15px;
     transition: transform 0.5s ease;
 }
