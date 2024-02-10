@@ -45,9 +45,10 @@
     <div id="routinesFounded" style="display: none;">
         <h1 id="myRoutines">My routines</h1>
         <div id="container">
-            <div *ngFor="let routine of routinesList" class="routine-item" (click) = addEx(routine)>
+            <div id="routine" *ngFor="let routine of routinesList" class="routine-item" (click) = "addToCalendar==false && addEx(routine)" (click)="addToCalendar && chooseRoutine(routine)">
                 <h1 class="routine-name"> {{routine.name}}</h1>
                 <p class="routine-amountEX"> {{routine.excerciseList.length}} excercises</p>
+                <p  *ngIf="routine.isScheduled">Scheduled</p>
             </div>
         </div>
     </div>

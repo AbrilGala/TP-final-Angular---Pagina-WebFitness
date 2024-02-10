@@ -5,6 +5,11 @@ import { routine } from '../models/routine';
 import { UserService } from '../user.service';
 import { Usuario } from '../models/usuario';
 import { Display } from '../display/display';
+import { first, last } from 'rxjs';
+import { routineScheduled } from '../models/routineScheduled';
+import { day } from '../models/day';
+import { month } from '../models/month';
+import { season } from '../models/season';
 
 @Component({
   selector: 'app-routines',
@@ -19,7 +24,10 @@ export class RoutinesComponent {
   publicRoutinesList: routine[] = [];
   usersList: Usuario[] = [];
   position = -1;
+  addToCalendar: boolean = false;
   user: Usuario = new Usuario("","","");
+  months: Array<month> = [];
+  newSeason: season = new season(0, [], 0);
   constructor(userService: UserService){
     this.usersList = userService.obtenerUsuarios();
   }
@@ -32,6 +40,10 @@ export class RoutinesComponent {
       console.log(this.user);
       
       if(this.position>=0){ ///ENCONTRO EL USUARIO 
+        if(this.user.newSeason){
+          this.newSeason = this.user.newSeason;
+          this.months = this.newSeason.months;
+        }
         if(this.ejercicioSerializado){
           Display.displayBlock("selectRoutine");
         }
@@ -43,6 +55,9 @@ export class RoutinesComponent {
         Display.displayBlock('optionLook');
         Display.displayBlock("optionDelete");
         if(this.routinesList.length>0){
+          if(this.verificarCalendario() == true){
+            this.addToCalendar = true;
+          }
           Display.displayBlock('routinesFounded');
           let info = document.getElementById("routineName");
           for(let i=0; i<this.routinesList.length; i++) {
@@ -70,6 +85,65 @@ export class RoutinesComponent {
     }
   displayCreate(name: string){
     window.location.href = name;
+  }
+  chooseRoutine(routineAux: routine){
+    let firstDayStoraged = localStorage.getItem("firstDayCalendar");
+    let lastDayStoraged = localStorage.getItem("lastDayCalendar");
+    let firstMonthStoraged = localStorage.getItem("firstMonthCalendar");
+    if(firstDayStoraged && lastDayStoraged && firstMonthStoraged){
+      let firstDay: day = JSON.parse(firstDayStoraged);
+      let lastDay: day = JSON.parse(lastDayStoraged);
+      let firstMonth: month = JSON.parse(firstMonthStoraged);
+      let routinesScheduled: Array<routineScheduled> = [];
+      let color = this.blockDaysOccuped(firstMonth, firstDay, lastDay);
+      routineAux.isScheduled = true;
+      routineAux.firstDays.push(firstDay);
+      routineAux.lastDays.push(lastDay);
+      console.log("POST FD LD");
+      
+      this.routinesList[routineAux.id] = routineAux;
+      this.user.userRoutines = this.routinesList;
+      let newRoutineScheduled = new routineScheduled(routineAux, firstDay, lastDay, firstMonth, color);
+      routinesScheduled.push(newRoutineScheduled);
+      this.user.routinesXcalendar.push(newRoutineScheduled);
+      localStorage.setItem("oneUser", JSON.stringify(this.user));
+      this.usersList[this.position] = this.user;
+      localStorage.setItem("users", JSON.stringify(this.usersList));
+      localStorage.setItem("calendarAdded", JSON.stringify(true));
+    }
+    window.location.href = "calendar";
+  }
+  blockDaysOccuped(monthAux: month, firstDay: day, lastDay: day): string{
+    let randomColor = this.generateRandomColor();
+    for(let i=0; i<monthAux.days.length; i++){
+      let currDate: day = monthAux.days[i];
+      if((currDate.number >= firstDay.number) && (currDate.number <= lastDay.number)){
+        currDate.occuped = true;
+        currDate.color = randomColor;
+        ///console.log("TRUE "+ currDate.number);
+      }
+      monthAux.days[i].color = currDate.color;
+      monthAux.days[i].occuped = currDate.occuped;
+    }
+    this.months[monthAux.monthNumber-1] = monthAux;
+    this.newSeason.months = this.months;
+    this.user.newSeason = this.newSeason;
+    localStorage.setItem("oneUser", JSON.stringify(this.user));
+    this.usersList[this.position] = this.user;
+    localStorage.setItem("users", JSON.stringify(this.usersList));
+    return randomColor;
+  }
+  generateRandomColor(): string {
+    return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+  }
+  verificarCalendario(): boolean{
+    let aux = localStorage.getItem("calendarDate");
+    let exists: boolean = false;
+    if(aux){
+      exists = JSON.parse(aux);
+      localStorage.removeItem("calendarDate");
+    }
+    return exists;
   }
   verificarUsuarioExistente(user: Usuario): number{
     let i=0;
