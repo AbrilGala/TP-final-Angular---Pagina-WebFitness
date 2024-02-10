@@ -3,9 +3,10 @@ body {
   background-color: rgb(48, 48, 56);
   margin: 0;
   padding: 0;
-  height: 870px;
+  height: 860px;
 }
 #calendar {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
@@ -13,6 +14,7 @@ body {
   display: flex;
   text-align: center;
   justify-content: center;
+  z-index: 0;
 }
 #options{
   color: white;
@@ -107,16 +109,117 @@ height: 70%;
     bottom: 0;
     text-align: center;
 }
-#days{
-  height: fit-content;
-  width: fit-content;
-  text-align: center;
-  border-radius: 30px;
-
-}
 #dayNumb{
   width: 30px;
   height: 5px;
   padding: 5px;
   padding-bottom: 12px;
+}
+#days{
+  height: fit-content;
+  width: fit-content;
+  text-align: center;
+  margin-left: 42px;
+}
+.occuped{
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 3px solid;
+    
+}
+.dayZero{
+  color: rgb(206, 206, 206);
+}
+.selectedDay{
+  background-color: grey;
+}
+
+#dayNumb{
+  width: 30px;
+  height: 5px;
+  padding: 5px;
+  padding-bottom: 12px;
+}
+.borderCircle{
+  border-radius: 30px;
+
+}
+.infoAux{
+  font-size: 14px;
+  color: white;
+  margin-top: 20px;
+  z-index: 999;
+}
+#info2{
+  position: absolute;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 50px;
+}
+#info{
+  display: inline-block;
+}
+#daysAndName{
+  margin-left: 20px;
+}
+#green{
+  text-align: center;
+  width: 15px;
+  height: 15px;position: absolute;
+  margin-top: 2px;
+}
+#infoMessage{
+  position: absolute;
+  margin-top: 25px;
+  font-size: 14px;
+  margin-left: 10px;
+  color: white;
+}
+#routineName{
+  cursor: pointer;
+}
+#routineName:hover{
+  color: rgb(170, 226, 0);
+}
+#deleteRoutine{
+  margin-top: 0px;
+  text-align: center;
+  background-color: rgb(48, 48, 56);
+  color: black;
+  width: 506px;
+  margin-left: 33%;
+  background-color: rgb(195, 195, 195);
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 506px;
+}
+#selectDelete{
+  font-size: 30px;
+  width: fit-content;
+}
+#routinesToDelete{
+  width: fit-content;
+  display: inline-block;
+}
+#routineDeleteName{
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#routineDeleteName:hover{
+  color: green;
+}
+#buttonDelete{
+  position: static;
+  font-size: 15px;
+  width: 100px;
+  height: 50px;
+  padding-top: 15px;
+  text-align: center;
+  margin-left: 20px;
+}
+.selectedRoutine{
+  color: blue;
+  cursor: pointer;
 }

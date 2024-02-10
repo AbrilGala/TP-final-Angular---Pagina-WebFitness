@@ -7,7 +7,14 @@
 </head>
 <body>
     <app-nav-bar-logged></app-nav-bar-logged>
-    <br><br><br><br><br>
+    <br><br><br><br>
+    <div id="deleteRoutine" style="display: none;">
+        <p id="selectDelete">Select the routine you want to delete</p>
+        <div id="routinesToDelete" *ngFor="let routineScheduled of routinesXcalendar" [ngClass]="{'selectedRoutine': isRoutineSelected(routineScheduled)}">
+            <p id="routineDeleteName" (click)="clickRoutine(routineScheduled)" *ngIf="routineScheduled.startingMonth.monthNumber==monthSelected.monthNumber" [ngClass]="{'selectedRoutine': isRoutineSelected(routineScheduled)==true}">{{routineScheduled.routines.name}}</p>
+        </div>
+        <div id="buttonDelete" (click)="deleteRoutine()" class="button">DELETE</div>
+    </div>
     <div id="options">
         <h1 id="selectStart" style="display: none;">Select the first day of the calendar for your routine</h1>
         <div id="buttonStart" class="button" style="display: none;" (click)="displayQuest('selectFinish', 'buttonFinish', 'selectStart', 'buttonStart')">SELECT</div>
@@ -15,6 +22,16 @@
         <div id="buttonFinish" class="button" style="display: none;" (click)="changeWindow('routines')">SELECT</div>
     </div>
 
+    <p id="infoMessage">Days already settled for a routine</p>
+
+    <div id="info2" class="infoAux">
+        <div id="routineXSchedule" *ngFor="let routineScheduled of routinesXcalendar"> 
+            <div id="info" *ngIf="monthsCheck(routineScheduled) == true">
+                <div id="green" style.color="{{routineScheduled.color}}" style.background-color="{{routineScheduled.color}}"></div>
+                <p id="daysAndName">{{routineScheduled.startingDay.number}}-{{routineScheduled.lastDay.number}}: <span id="routineName" (click)="changeWindowToRoutine(routineScheduled.routines)">{{routineScheduled.routines.name}}</span> </p>
+            </div>
+        </div>
+    </div>
     <div id="calendar">
         <div id="month">
             <h1 id="monthName">{{monthSelected.name}}</h1>
@@ -25,7 +42,7 @@
             <p class="dayType">FRIDAY</p>
             <p class="dayType">SATURDAY</p>
             <p class="dayType">SUNDAY</p>
-            <div id="days" *ngFor="let day of monthSelected.days" class="day-item" [ngStyle]="{'color': day.number === 0 ? 'rgb(206, 206, 206)' : 'black', 'background-color': selectedDay === day ? 'grey' : 'transparent'}" [ngClass]="{'current-day': isCurrentDay(day.number, monthSelected.monthNumber)}">
+            <div id="days"  *ngFor="let day of monthSelected.days" class="day-item" style.border-bottom-color="{{day.color}}" [ngClass]="{'current-day': isCurrentDay(day.number, monthSelected.monthNumber),'occuped': isDayOccuped(day) , 'dayZero': day.number === 0, 'selectedDay': selectedDay === day, 'borderCircle': !isDayOccuped(day)}">
                 <p id="dayNumb" [ngStyle]="{'cursor': addButtonDisplayed === true ? 'pointer' : ''}" (click)="selectFirstDay(day, monthSelected)">{{day.number}}</p>
             </div>
         </div>
@@ -37,8 +54,7 @@
     </div>
     <div id="buttons">
         <div id="addRoutine" class="button" (click)="displayQuest('selectStart', 'buttonStart', 'selectFinish', 'buttonFinish')">ADD ROUTINE</div>
-        <div id="delete" class="button">DELETE ROUTINE</div>
+        <div id="delete" class="button" (click)="deleteDisplay()">DELETE ROUTINE</div>
     </div>
-
 </body>
 </html>

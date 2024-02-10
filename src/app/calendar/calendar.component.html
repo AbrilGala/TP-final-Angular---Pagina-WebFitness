@@ -8,6 +8,9 @@
 <body>
     <app-nav-bar-logged></app-nav-bar-logged>
     <br><br><br><br>
+    <div id="added" style="display: none;">
+        <h1>Routine added to the calendar</h1>
+    </div>
     <h1 id="season">2024</h1>
     <div id="calendar">
         <div id="month" *ngFor="let month of months" class="month-item" (click)="changeWindow('singleMonth', month)" >

@@ -4,6 +4,10 @@ import { week } from '../models/week';
 import { month } from '../models/month';
 import { season } from '../models/season';
 import { style } from '@angular/animations';
+import { routine } from '../models/routine';
+import { Display } from '../display/display';
+import { Usuario } from '../models/usuario';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-calendar',
@@ -14,21 +18,73 @@ export class CalendarComponent implements OnInit {
 currentDate = new Date();
 actualDay: any;
 months: Array<month> = [];
+routineAdded: boolean = false;
+usersList: Usuario[] = [];
+user: Usuario = new Usuario("","","");
+position: number = -1;
+newSeason: season = new season(0, [], 0);
+constructor(userService: UserService){
+  this.usersList = userService.obtenerUsuarios();
+}
 ngOnInit(): void {
-  /*this.months = this.createCalendar(); ///ESTO YA NO HACE FALTA, ERA PARA CREARLO, AHORA SE LEE DE LOCAL STORAGE ABAJO
-  let newSeason = new season(this.months.length, this.months, 2024);
-  localStorage.setItem("2024", JSON.stringify(newSeason));*/
-  let newSeasonStorage = localStorage.getItem("2024");
-  let newSeason: season;
-  if(newSeasonStorage){
-    newSeason = JSON.parse(newSeasonStorage);
-    this.months = newSeason.months;
-    for(let i=0; i<this.months.length; i++){
-      this.moveDays(this.months[i]);
+  const userSerializado = localStorage.getItem("oneUser");
+    if(userSerializado){
+      this.user = JSON.parse(userSerializado);
+    }     
+
+  this.position = this.verificarUsuarioExistente(this.user);  
+  if(this.position>=0){    
+    if(this.user.newSeason != undefined){
+      this.newSeason = this.user.newSeason;
+      this.months = this.newSeason.months
+    }else{
+      console.log("USER WITHOUT CALENDAR");
+      this.months = this.createCalendar(); ///ESTO YA NO HACE FALTA, ERA PARA CREARLO, AHORA SE LEE DE LOCAL STORAGE ABAJO
+      this.newSeason = new season(this.months.length, this.months, 2024);
+      localStorage.setItem("2024", JSON.stringify(this.newSeason));
+      this.months = this.newSeason.months;
+      for(let i=0; i<this.months.length; i++){
+        this.moveDays(this.months[i]);
+      }
+      this.verifyAddedRoutines();
+      this.newSeason.months = this.months;
+      this.user.newSeason = this.newSeason;
+      localStorage.setItem("oneUser", JSON.stringify(this.user));
+      this.usersList[this.position] = this.user;
+      localStorage.setItem("users", JSON.stringify(this.usersList));
+      localStorage.setItem("2024", JSON.stringify(this.newSeason));
+      location.reload();
     }
-    /*newSeason.months = this.months;
-    localStorage.setItem("2024", JSON.stringify(newSeason));*/
   }
+}
+verifyAddedRoutines(){
+  let verify = localStorage.getItem("calendarAdded");
+  if(verify){
+    this.routineAdded = JSON.parse(verify);
+    console.log("ROUTINE ADDED BEFORE IF");
+    if(this.routineAdded==true){
+      console.log("ROUTINE ADDED AFTER IF");
+      Display.displayBlock("added");
+    }else{
+      Display.displayNone("added");
+    }
+    localStorage.removeItem("calendarAdded");
+  }
+}
+verificarUsuarioExistente(user: Usuario): number{
+  let i=0;
+  let position = -1;
+  console.log(this.usersList.length);
+    while(i<this.usersList.length && user.email != this.usersList[i].email){
+      console.log(this.usersList[i].email);
+      console.log(user.email);
+      
+      i++;
+    }
+    if(i<this.usersList.length) {        
+      position = i;
+    }
+    return position;
 }
 isCurrentDay(dayNumber: number, monthNumber: number): boolean{
   let actualMonth = this.currentDate.getMonth()+1;
